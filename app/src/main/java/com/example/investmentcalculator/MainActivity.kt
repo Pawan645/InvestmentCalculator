@@ -27,8 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.investmentcalculator.screens.SIPCal
 import com.example.investmentcalculator.screens.SplashScreen
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 
 
