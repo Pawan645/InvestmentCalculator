@@ -37,7 +37,7 @@ import java.text.NumberFormat
 import java.util.Locale
 import kotlin.math.pow
 
-@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalComposeUiApi::class)
 @Preview(showBackground = true)
 @Composable
 fun LumpsumCal() {
@@ -131,12 +131,16 @@ fun LumpsumCal() {
                 .size(140.dp, 50.dp),
             colors = ButtonDefaults.buttonColors(Color.Green),
             onClick = {
-                // Parsing input values to Long
+
                 val investedAmount = investedAmt.toLongOrNull() ?: 0L
                 val returnRateValue = returnRate.toDoubleOrNull() ?: 0.0
                 val duration = timePeriod.toFloatOrNull() ?: 0.0f
 
-                if (investedAmount < 1 || returnRateValue < 1 || duration < 1) {
+                if (investedAmt.isEmpty() || returnRate.isEmpty() || timePeriod.isEmpty()) {
+
+                    Toast.makeText(context, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+
+                }else if (investedAmount < 1 || returnRateValue < 1 || duration < 1) {
                     Toast.makeText(context, "All fields should be greater than 0", Toast.LENGTH_SHORT).show()
                 } else {
                     val rate = 1 + returnRateValue / 100
